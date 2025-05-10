@@ -7,6 +7,7 @@ Optional tools to help manage data in a mergerfs pool.
 All of these suplimental tools are self contained Python3 apps. Make sure you have Python 3 installed and either run `make install` or copy the file to `/usr/local/bin` or wherever you keep your binarys and make it executable (chmod +x).
 
 ## TOOLS
+
 ### mergerfs.ctl
 
 A wrapper around the mergerfs xattr interface.
@@ -105,7 +106,6 @@ optional arguments:
                          Can be used multiple times.
 ```
 
-
 ### mergerfs.dedup
 
 Finds and removes duplicate files across mergerfs pool's branches. Use the
@@ -160,7 +160,6 @@ rm -vf /mnt/drive3/test/foo
 # Total savings: 10.0B
 ```
 
-
 ### mergerfs.balance
 
 Will move files from the most filled drive (percentage wise) to the least filled drive. Will do so till the most and least filled drives come within a user defined percentage range (defaults to 2%).
@@ -204,10 +203,9 @@ to:   /mnt/drive2/foo/bar
 rsync ...
 ```
 
-
 ### mergerfs.consolidate
 
-Consolidate **files** in a **single** mergerfs directory onto a **single** drive, recursively. This does **NOT** move all files at and below that directory to 1 drive. If you want to move data between drives simply use normal rsync or similar. This tool is only useful in niche usecases where the person wants to colocate files of their TV, music, etc. files onto a single drive *after the fact.* If you really wanted that you should probably use path preservation. For most people there is only downsides to using path preservation or colocating files.
+Consolidate **files** in a **single** mergerfs directory onto a **single** drive, recursively. This does **NOT** move all files at and below that directory to 1 drive. If you want to move data between drives simply use normal rsync or similar. This tool is only useful in niche usecases where the person wants to colocate files of their TV, music, etc. files onto a single drive _after the fact._ If you really wanted that you should probably use path preservation. For most people there is only downsides to using path preservation or colocating files.
 
 Run as `root`. Requires `rsync` to be installed.
 
@@ -235,43 +233,44 @@ optional arguments:
 ## SUPPORT
 
 #### Contact / Issue submission
-* github.com: https://github.com/trapexit/mergerfs-tools/issues
-* email: trapexit@spawn.link
-* twitter: https://twitter.com/_trapexit
+
+- github.com: https://github.com/trapexit/mergerfs-tools/issues
+- email: trapexit@spawn.link
+- twitter: https://twitter.com/_trapexit
 
 #### Support development
 
 This software is free to use and released under a very liberal license. That said if you like this software and would like to support its development donations are welcome.
 
-* PayPal: https://paypal.me/trapexit
-* GitHub Sponsors: https://github.com/sponsors/trapexit
-* Patreon: https://www.patreon.com/trapexit
-* SubscribeStar: https://www.subscribestar.com/trapexit
-* Ko-Fi: https://ko-fi.com/trapexit
-* Open Collective: https://opencollective.com/trapexit
-* Bitcoin (BTC): bc1qjwlywkqxgrxql3m7a7fvcsf3z3t98jvtekqp2j
-* Bitcoin Cash (BCH): qrvymmkvuk7703m7cx0pqxc3mz4mmsn6ngn9xw52kc
-* Bitcoin SV (BSV): 1FkFuxRtt3f8LbkpeUKRZq7gKJFzGSGgZV
-* Bitcoin Gold (BTG): Gfk8QbMJFgpMTcY7uB63axy6HU7uTPPWNj
-* Basic Attention Token (BAT): 0x6241857fa5fb7667FB7a792b13E83fDEabe96f7F
-* Chainlink (LINK): 0x6241857fa5fb7667FB7a792b13E83fDEabe96f7F
-* Dash (DASH): Xu2U3Nd3G4hM5TRQUBcP4DHJFzXH93xB84
-* Dogecoin (DOGE): DGFBPsRBYL8wHbgnvKbYkVn5FvAe854p1c
-* Ethereum (ETH): 0x6241857fa5fb7667FB7a792b13E83fDEabe96f7F
-* Filecoin (FIL): f1wpypkjcluufzo74yha7p67nbxepzizlroockgcy
-* LBRY Credits (LBC): bFusyoZPkSuzM2Pr8mcthgvkymaosJZt5r
-* Litecoin (LTC): LfL7jLNYuVpy7v5TyRyc3yRZ2uhqc4UoR3
-* Monero (XMR): 45BBZMrJwPSaFwSoqLVNEggWR2BJJsXxz7bNz8FXnnFo3GyhVJFSCrCFSS7zYwDa9r1TmFmGMxQ2HTntuc11yZ9q1LeCE8f
-* Tezos (XTZ): tz1ZxerkbbALsuU9XGV9K9fFpuLWnKAGfc1C
-* Zcash (ZEC): t1bjbVBK7tx9EGBrnD2wDfjGV9yZrcyfMmr
-* Other crypto currencies: contact me for address
+- PayPal: https://paypal.me/trapexit
+- GitHub Sponsors: https://github.com/sponsors/trapexit
+- Patreon: https://www.patreon.com/trapexit
+- SubscribeStar: https://www.subscribestar.com/trapexit
+- Ko-Fi: https://ko-fi.com/trapexit
+- Open Collective: https://opencollective.com/trapexit
+- Bitcoin (BTC): bc1qjwlywkqxgrxql3m7a7fvcsf3z3t98jvtekqp2j
+- Bitcoin Cash (BCH): qrvymmkvuk7703m7cx0pqxc3mz4mmsn6ngn9xw52kc
+- Bitcoin SV (BSV): 1FkFuxRtt3f8LbkpeUKRZq7gKJFzGSGgZV
+- Bitcoin Gold (BTG): Gfk8QbMJFgpMTcY7uB63axy6HU7uTPPWNj
+- Basic Attention Token (BAT): 0x6241857fa5fb7667FB7a792b13E83fDEabe96f7F
+- Chainlink (LINK): 0x6241857fa5fb7667FB7a792b13E83fDEabe96f7F
+- Dash (DASH): Xu2U3Nd3G4hM5TRQUBcP4DHJFzXH93xB84
+- Dogecoin (DOGE): DGFBPsRBYL8wHbgnvKbYkVn5FvAe854p1c
+- Ethereum (ETH): 0x6241857fa5fb7667FB7a792b13E83fDEabe96f7F
+- Filecoin (FIL): f1wpypkjcluufzo74yha7p67nbxepzizlroockgcy
+- LBRY Credits (LBC): bFusyoZPkSuzM2Pr8mcthgvkymaosJZt5r
+- Litecoin (LTC): LfL7jLNYuVpy7v5TyRyc3yRZ2uhqc4UoR3
+- Monero (XMR): 45BBZMrJwPSaFwSoqLVNEggWR2BJJsXxz7bNz8FXnnFo3GyhVJFSCrCFSS7zYwDa9r1TmFmGMxQ2HTntuc11yZ9q1LeCE8f
+- Tezos (XTZ): tz1ZxerkbbALsuU9XGV9K9fFpuLWnKAGfc1C
+- Zcash (ZEC): t1bjbVBK7tx9EGBrnD2wDfjGV9yZrcyfMmr
+- Other crypto currencies: contact me for address
 
 ## LINKS
 
-* https://spawn.link
-* https://github.com/trapexit/mergerfs
-* https://github.com/trapexit/mergerfs/wiki
-* https://github.com/trapexit/mergerfs-tools
-* https://github.com/trapexit/scorch
-* https://github.com/trapexit/bbf
-* https://github.com/trapexit/backup-and-recovery-howtos
+- https://spawn.link
+- https://github.com/trapexit/mergerfs
+- https://github.com/trapexit/mergerfs/wiki
+- https://github.com/trapexit/mergerfs-tools
+- https://github.com/trapexit/scorch
+- https://github.com/trapexit/bbf
+- https://github.com/trapexit/backup-and-recovery-howtos

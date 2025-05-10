@@ -139,14 +139,14 @@ def print_args(args):
 def build_move_file(src,dst,relfile):
     frompath = os.path.join(src,'./',relfile)
     topath   = dst+'/'
-    args = ['rsync',
+    move_args = ['rsync',
             '-avlHAXWE',
             '--relative',
             '--progress',
             '--remove-source-files',
             frompath,
             topath]
-    return args
+    return move_args
 
 
 def freespace_percentage(srcmounts):
@@ -277,9 +277,12 @@ def main():
                 del l[0]
                 relfilepath = find_a_file(fromdrive,
                                           relpath,
-                                          file_includes,file_excludes,
-                                          path_includes,path_excludes,
-                                          exclude_lt,exclude_gt,
+                                          file_includes,
+                                          file_excludes,
+                                          path_includes,
+                                          path_excludes,
+                                          exclude_lt,
+                                          exclude_gt,
                                           args.ignore_hardlinks)
             if len(l) == 0:
                 print('Could not find file to transfer: exiting...')
@@ -288,10 +291,10 @@ def main():
                 print('Source drive == target drive: exiting...')
                 break
 
-            args = build_move_file(fromdrive,todrive,relfilepath)
+            move_args = build_move_file(fromdrive,todrive,relfilepath)
             print('file: {}\nfrom: {}\nto:   {}'.format(relfilepath,fromdrive,todrive))
-            print_args(args)
-            rv = execute(args)
+            print_args(move_args)
+            rv = execute(move_args)
             if rv:
                 print('ERROR - exited with exit code: {}'.format(rv))
                 break
