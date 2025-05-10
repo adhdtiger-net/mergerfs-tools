@@ -93,11 +93,20 @@ def exclude_by_size(filepath,exclude_lt,exclude_gt):
         return False
 
 
+def is_hardlinked(filepath):
+    try:
+        st = os.lstat(filepath)
+        return st.st_nlink > 1
+    except:
+        return False
+
+
 def find_a_file(src,
                 relpath,
                 file_includes,file_excludes,
                 path_includes,path_excludes,
-                exclude_lt,exclude_gt):
+                exclude_lt,exclude_gt,
+                ignore_hardlinks):
     basepath = os.path.join(src,relpath)
     for (dirpath,dirnames,filenames) in os.walk(basepath):
         for filename in filenames:
@@ -111,6 +120,8 @@ def find_a_file(src,
             if not match(filepath,path_includes):
                 continue
             if exclude_by_size(filepath,exclude_lt,exclude_gt):
+                continue
+            if ignore_hardlinks and is_hardlinked(filepath):
                 continue
             return os.path.relpath(filepath,src)
     return None
@@ -184,7 +195,7 @@ def buildargparser():
     parser.add_argument('-i','--include',
                         dest='include',
                         type=str,
-                         action='append',
+                        action='append',
                         default=[],
                         help='fnmatch compatible file filter (can use multiple times)')
     parser.add_argument('-e','--exclude',
@@ -215,6 +226,10 @@ def buildargparser():
                         type=str,
                         default='0',
                         help='exclude files larger than <int>[KMGT] bytes')
+    parser.add_argument('--ignore-hardlinks',
+                        dest='ignore_hardlinks',
+                        action='store_true',
+                        help='ignore files that have hardlinks')
     return parser
 
 
@@ -264,7 +279,8 @@ def main():
                                           relpath,
                                           file_includes,file_excludes,
                                           path_includes,path_excludes,
-                                          exclude_lt,exclude_gt)
+                                          exclude_lt,exclude_gt,
+                                          args.ignore_hardlinks)
             if len(l) == 0:
                 print('Could not find file to transfer: exiting...')
                 break
@@ -290,4 +306,4 @@ def main():
 
 
 if __name__ == "__main__":
-   main()
+  main()
