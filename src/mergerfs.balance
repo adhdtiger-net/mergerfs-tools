@@ -127,12 +127,12 @@ def find_a_file(src,
     return None
 
 
-def execute(args):
-    return subprocess.call(args)
+def execute(cmd_args):
+    return subprocess.call(cmd_args)
 
 
-def print_args(args):
-    quoted = [shlex.quote(arg) for arg in args]
+def print_args(cmd_args):
+    quoted = [shlex.quote(arg) for arg in cmd_args]
     print(' '.join(quoted))
 
 
